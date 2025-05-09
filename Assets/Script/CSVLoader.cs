@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 
 public class CSVLoader : MonoBehaviour
 {
-    public TextAsset csvMap;             // CSVƒtƒ@ƒCƒ‹‚ğInspector‚©‚çw’è
+    public TextAsset csvMap;             // CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’Inspectorã‹ã‚‰æŒ‡å®š
     public CameraController cameraController;
     public GameObject player;
     public GameObject floor;
@@ -54,7 +54,7 @@ public class CSVLoader : MonoBehaviour
             }
         }
 
-        // ƒJƒƒ‰‚ÉƒTƒCƒY‚ğ“n‚·
+        // ã‚«ãƒ¡ãƒ©ã«ã‚µã‚¤ã‚ºã‚’æ¸¡ã™
         cameraController.SetBounds(width, height);
     }
 
