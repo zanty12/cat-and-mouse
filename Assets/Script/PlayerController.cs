@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public LayerMask obstacleLayer;
     private bool isMoving = false;
-    public Vector2Int currentDirection = Vector2Int.up; // ‰Šú‚ÍãŒü‚«
+    public Vector2Int currentDirection = Vector2Int.up; // åˆæœŸã¯ä¸Šå‘ã
     public TextMeshProUGUI moveLimitText;
 
     void Start()
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isMoving) return; // ˆÚ“®’†‚Í“ü—Íó•t‚µ‚È‚¢
+        if (isMoving) return; // ç§»å‹•ä¸­ã¯å…¥åŠ›å—ä»˜ã—ãªã„
 
         moveLimitText.SetText(Convert.ToString(moveLimit));
 
@@ -96,11 +96,11 @@ public class PlayerController : MonoBehaviour
         Collider2D hit = Physics2D.OverlapPoint(targetPos);
         if (hit != null)
         {
-            // ‚±‚±‚Å”»’è or ƒCƒxƒ“ƒgˆ—I
+            // ã“ã“ã§åˆ¤å®š or ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†ï¼
             IBlocker blocker = hit.GetComponent<IBlocker>();
             if (blocker != null)
             {
-                blocker.OnBlocked(this); // © ‚±‚±‚Å”­‰Î‚Å‚«‚éI
+                blocker.OnBlocked(this); // â† ã“ã“ã§ç™ºç«ã§ãã‚‹ï¼
             }
 
             return Physics2D.OverlapCircle(targetPos, 0.1f, obstacleLayer) != null;
@@ -116,13 +116,20 @@ public class PlayerController : MonoBehaviour
         Collider2D hit = Physics2D.OverlapPoint(biteTarget);
         if (hit != null && hit.CompareTag("Cat"))
         {
-            Debug.Log("Šš‚ñ‚¾");
-            Instantiate(effect, biteTarget, Quaternion.identity, transform);
+            Debug.Log("å™›ã‚“ã ");
+            Instantiate(effect, biteTarget, Quaternion.identity);
+
+            //ç™½ã„çŒ«ã®æ‰‹ã‚’å™›ã‚“ã å ´åˆ
+            if(hit.GetComponent<CatWhite>())
+            {
+                StartCoroutine(hit.GetComponent<CatWhite>().Damage());
+            }
+
             //hit.GetComponent<Cat>()?.OnBitten();
         }
         else
         {
-            Debug.Log("”L‹‚È‚¢");
+            Debug.Log("çŒ«å±…ãªã„");
         }
     }
 
