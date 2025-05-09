@@ -120,9 +120,14 @@ public class PlayerController : MonoBehaviour
             Instantiate(effect, biteTarget, Quaternion.identity);
 
             //白い猫の手を噛んだ場合
-            if(hit.GetComponent<CatWhite>())
+            if (hit.GetComponent<CatWhite>())
             {
                 StartCoroutine(hit.GetComponent<CatWhite>().Damage());
+            }
+            //猫の腕を噛んだ時
+            if (hit.GetComponent<CatArm>())
+            {
+                hit.GetComponent<CatArm>().Damage();
             }
 
             //hit.GetComponent<Cat>()?.OnBitten();
