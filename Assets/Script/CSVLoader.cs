@@ -49,7 +49,7 @@ public class CSVLoader : MonoBehaviour
                     case 3:
                         obj = Instantiate(floor, position, Quaternion.identity, transform);
                         obj = Instantiate(cat_white, position, Quaternion.identity, transform);
-                        obj.GetComponent<CatWhite>().SetArm(3, (int)ARM_DIRECTION.DOWN);
+                        obj.GetComponent<CatWhite>().SetArm(3, (int)ARM_DIRECTION.LEFT);
                         break;
                 }
             }
